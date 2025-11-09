@@ -158,6 +158,32 @@ tbody tr:nth-child(even) {
   justify-content: center;
   gap: 6px;
 }
+.edit-btn {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-right: 8px;
+}
+
+.edit-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+td:last-child {
+    display: flex;
+    gap: 8px;
+}
 
 .delete-btn:hover {
   background-color: #c0392b;

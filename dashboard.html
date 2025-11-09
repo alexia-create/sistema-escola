@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Sistema de Matrículas</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body {
+            background: linear-gradient(135deg, #0019a8, #fafafa);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .header {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .header h1 { color: #0019a8; font-size: 1.8rem; }
+        #logout-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        #logout-btn:hover { background: #c0392b; }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .nav-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .nav-card h2 { font-size: 1.5rem; margin-bottom: 10px; color: #0019a8; }
+        .nav-card p { font-size: 1rem; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 id="welcome-message">Carregando...</h1>
+    <button id="logout-btn">Sair</button>
+</div>
+
+<div class="nav-grid">
+    <a href="formulario.html" class="nav-card">
+        <h2>Alunos</h2>
+        <p>Cadastrar, editar e visualizar alunos.</p>
+    </a>
+
+    <a href="turmas.html" class="nav-card">
+        <h2>Turmas</h2>
+        <p>Cadastrar e gerenciar turmas.</p>
+    </a>
+
+    <a href="matriculas.html" class="nav-card">
+        <h2>Matrículas</h2>
+        <p>Matricular alunos em turmas.</p>
+    </a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+        if (user && user.nome) {
+            document.getElementById('welcome-message').textContent = `Bem-vindo(a), ${user.nome}!`;
+        } else {
+            alert('Você precisa estar logado para ver esta página.');
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('usuarioLogado'); // Limpa o login
+            alert('Você saiu do sistema.');
+            window.location.href = 'index.html'; // Volta para a página de login
+        });
+    });
+</script>
+</body>
+</html>

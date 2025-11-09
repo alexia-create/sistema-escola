@@ -35,7 +35,7 @@ form.addEventListener("submit", async function (e) {
             localStorage.setItem('usuarioLogado', JSON.stringify(data.user));
 
 
-            window.location.href = "formulario.html";
+            window.location.href = "dashboard.html";
         } else {
             alert(data.message);
         }
