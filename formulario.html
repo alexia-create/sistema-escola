@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Aluno</title>
+  <link rel="stylesheet" href="formulario.css">
+</head>
+
+<body>
+  <h1 class="titulo-site">
+    Sistema de <span>Cadastro de Alunos</span>
+  </h1>
+
+  <div class="wrapper">
+    <div class="form-container">
+      <h2>Formulário de Cadastro</h2>
+
+      <section class="cadastro-section">
+        <form id="formAluno">
+          <div class="form-group">
+            <input type="text" id="nome" placeholder="Nome completo" required>
+            <input type="date" id="dataNascimento" required>
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="nomePai" placeholder="Nome do pai" required>
+            <input type="text" id="nomeMae" placeholder="Nome da mãe" required>
+          </div>
+
+          <div class="form-group">
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+          </div>
+
+          <div class="form-group">
+            <select id="curso" required>
+              <option value="">Selecione o curso</option>
+              <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+              <option value="Engenharia de Software">Engenharia de Software</option>
+              <option value="Ciência da Computação">Ciência da Computação</option>
+              <option value="Sistemas para Internet">Sistemas para Internet</option>
+            </select>
+
+            <select id="turno" required>
+              <option value="">Selecione o turno</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Cadastrar Aluno</button>
+        </form>
+      </section>
+
+      <section class="tabela-section">
+        <table id="tabelaAlunos">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+              <th>Pai</th>
+              <th>Mãe</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th>Curso</th>
+              <th>Turno</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <script src="codigo-01.js"></script>
+</body>
+</html>

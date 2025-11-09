@@ -1,0 +1,154 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Fundo e centralização */
+body {
+  background: linear-gradient(135deg, #0019a8, #fafafa);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Container principal */
+.container {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  width: 95%;
+  max-width: 1100px;
+  padding: 30px 40px;
+  transition: all 0.3s ease;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: #0019a8;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+/* Cabeçalho */
+th {
+  background: linear-gradient(to right, #668eea, #00ccff);
+  color: white;
+  padding: 14px;
+  text-align: left;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Linhas */
+tr {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+tr:hover {
+  transform: scale(1.01);
+  background: #f0f6ff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* Células */
+td {
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  color: #333;
+  border-bottom: 1px solid #e2e6f0;
+}
+
+/* Bordas laterais arredondadas */
+td:first-child {
+  border-left: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+td:last-child {
+  border-right: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Status */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status span {
+  font-weight: bold;
+}
+
+.status .ativo {
+  color: #00aa33;
+}
+
+.status .inativo {
+  color: #cc0000;
+}
+
+/* Botão editar */
+.status button {
+  background: linear-gradient(to right, #668eea, #00ccff);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.status button:hover {
+  background: linear-gradient(to right, #4a7be5, #00aaff);
+}
+
+/* Campo de observação */
+input[type="text"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #0019a8;
+  box-shadow: 0 0 5px rgba(0,25,168,0.4);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  th, td {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}

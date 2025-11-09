@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Turmas - Escola José do Patrocínio</title>
+  <link rel="stylesheet" href="matricula.css" />
+</head>
+<body>
+  <h1 class="titulo-site">
+    Sistema de Gestão<br>
+    <span>Escola José do Patrocínio</span>
+  </h1>
+
+  <div class="wrapper">
+    <div class="form-container">
+      <h2>Cadastro de Turmas</h2>
+
+      <div class="cadastro-section">
+        <form id="formTurma">
+          <div class="form-group">
+            <input type="text" id="nomeTurma" placeholder="Nome da Turma" required />
+            <input type="text" id="codigoTurma" placeholder="Código da Turma" required />
+          </div>
+
+          <div class="form-group">
+            <select id="turnoTurma" required>
+              <option value="">Selecione o Turno</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
+            <button type="submit" class="submit-btn">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="tabela-section">
+        <table id="tabelaTurmas">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Código</th>
+              <th>Turno</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="codigo-04.js"></script>
+</body>
+</html>
