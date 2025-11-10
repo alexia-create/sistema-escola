@@ -7,7 +7,6 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Agora selecionamos o 'container' em vez da 'tabela'
     const container = document.querySelector("#relatorio-container");
     const API_URL = 'https://partedobackend.onrender.com';
 
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const grupo = gruposDeTurma[nomeTurma];
 
                 const titulo = document.createElement('h3');
-                titulo.className = 'turma-title'; // Usa o CSS que criamos
+                titulo.className = 'turma-title';
                 titulo.textContent = `${nomeTurma} (${grupo.turno})`;
                 container.appendChild(titulo);
 
