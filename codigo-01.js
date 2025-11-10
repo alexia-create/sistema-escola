@@ -16,6 +16,12 @@ const API_URL = 'https://partedobackend.onrender.com';
 
 let idEmEdicao = null;
 
+function formatarData(dataISO){
+    const dataApenas = dataISO.substring(0,10);
+    const partes = dataApenas.split("-");
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
+}
+
 async function carregarTurmasDropdown() {
     try {
         const response = await fetch(`${API_URL}/turmas`);
@@ -61,14 +67,15 @@ function adicionarLinha(aluno) {
 
     novaLinha.innerHTML = `
     <td>${aluno.nome_aluno}</td>
-    <td>${aluno.data_nascimento}</td>
+    <td>${formatarData(aluno.data_nascimento)}</td>
     <td>${aluno.nome_pai || 'N/A'}</td>
     <td>${aluno.nome_mae}</td>
     <td>${aluno.email || 'N/A'}</td>
     <td>${aluno.telefone || 'N/A'}</td>
     <td>${aluno.nome_turma || 'N/A'}</td> <td>${aluno.turno || 'N/A'}</td> <td>
       <button class="edit-btn">Editar</button> 
-      <button class="delete-btn">
+      <button class="delete-btn">Excluir</button>
+    </td>
   `;
 
     novaLinha.querySelector(".edit-btn").addEventListener("click", () => {
