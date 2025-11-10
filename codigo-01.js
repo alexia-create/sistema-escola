@@ -1,13 +1,33 @@
 const form = document.getElementById("formAluno");
 const tabela = document.querySelector("#tabelaAlunos tbody");
-const submitBtn = document.querySelector(".submit-btn"); // Pega o botão de submit
+const submitBtn = document.querySelector(".submit-btn");
+const turmaSelect = document.getElementById("turma"); // Pega o novo select de turma
 
 const API_URL = 'https://partedobackend.onrender.com';
 
 let idEmEdicao = null;
 
+async function carregarTurmasDropdown() {
+    try {
+        const response = await fetch(`${API_URL}/turmas`);
+        if (!response.ok) throw new Error('Erro ao buscar turmas');
+        const turmas = await response.json();
+
+        turmas.forEach(turma => {
+            const option = document.createElement('option');
+            option.value = turma.id; // O valor será o ID da turma
+            option.textContent = `${turma.nome_turma} (${turma.turno})`; // Ex: "1º Ano A (Manhã)"
+            turmaSelect.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error(error);
+        turmaSelect.innerHTML = '<option value="">Erro ao carregar turmas</option>';
+    }
+}
 
 async function carregarAlunos() {
+    // ... (código para carregar alunos na tabela continua o mesmo) ...
     tabela.innerHTML = '<tr><td colspan="9">Carregando alunos...</td></tr>';
     try {
         const response = await fetch(`${API_URL}/alunos`);
@@ -38,9 +58,7 @@ function adicionarLinha(aluno) {
     <td>${aluno.nome_mae}</td>
     <td>${aluno.email || 'N/A'}</td>
     <td>${aluno.telefone || 'N/A'}</td>
-    <td>${aluno.curso || 'N/A'}</td> 
-    <td>${aluno.turno || 'N/A'}</td>
-    <td>
+    <td>N/A</td> <td>N/A</td> <td>
       <button class="edit-btn">Editar</button> 
       <button class="delete-btn">
         <img src="lixeira.png" alt="Excluir" class="icon-lixeira">
@@ -49,9 +67,7 @@ function adicionarLinha(aluno) {
   `;
 
     novaLinha.querySelector(".edit-btn").addEventListener("click", () => {
-
         window.scrollTo(0, 0);
-
         document.getElementById("nome").value = aluno.nome_aluno;
         document.getElementById("dataNascimento").value = aluno.data_nascimento;
         document.getElementById("nomePai").value = aluno.nome_pai;
@@ -59,8 +75,9 @@ function adicionarLinha(aluno) {
         document.getElementById("email").value = aluno.email;
         document.getElementById("telefone").value = aluno.telefone;
 
-        idEmEdicao = aluno.id;
+        turmaSelect.value = "";
 
+        idEmEdicao = aluno.id;
         submitBtn.textContent = "Salvar Alterações";
     });
 
@@ -99,13 +116,9 @@ form.addEventListener("submit", async (e) => {
         mae: document.getElementById("nomeMae").value.trim(),
         email: document.getElementById("email").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
-        endereco: null
+        endereco: null,
+        turmaID: turmaSelect.value // NOVO: envia o ID da turma selecionada
     };
-
-    if (!dadosAluno.nome || !dadosAluno.mae || !dadosAluno.dataNascimento) {
-        alert("Por favor, preencha Nome, Data de Nascimento e Nome da Mãe!");
-        return;
-    }
 
     if (idEmEdicao) {
         try {
@@ -126,6 +139,13 @@ form.addEventListener("submit", async (e) => {
             alert('Erro ao conectar ao servidor para atualizar.');
         }
     } else {
+        // --- ESTAMOS CRIANDO UM NOVO (POST) ---
+        // (A rota POST agora espera o turmaID)
+        if (!dadosAluno.turmaID) {
+            alert("Por favor, selecione uma turma!");
+            return;
+        }
+
         try {
             const response = await fetch(`${API_URL}/alunos`, {
                 method: 'POST',
@@ -147,3 +167,4 @@ form.addEventListener("submit", async (e) => {
 });
 
 carregarAlunos();
+carregarTurmasDropdown();
