@@ -1,3 +1,11 @@
+(function() {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (!usuarioLogado) {
+        alert('Acesso negado. Por favor, faça o login.');
+        window.location.href = 'index.html';
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     const tabela = document.querySelector("#tabelaMatriculas tbody");
     const API_URL = 'https://partedobackend.onrender.com';

@@ -1,3 +1,11 @@
+(function() {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (!usuarioLogado) {
+        alert('Acesso negado. Por favor, faça o login.');
+        window.location.href = 'index.html';
+    }
+})();
+
 const formTurma = document.getElementById("formTurma");
 const tabelaTurmas = document.querySelector("#tabelaTurmas tbody");
 

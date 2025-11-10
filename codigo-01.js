@@ -1,7 +1,16 @@
+(function() {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (!usuarioLogado) {
+        alert('Acesso negado. Por favor, faça o login.');
+        window.location.href = 'index.html';
+    }
+})();
+
+
 const form = document.getElementById("formAluno");
 const tabela = document.querySelector("#tabelaAlunos tbody");
 const submitBtn = document.querySelector(".submit-btn");
-const turmaSelect = document.getElementById("turma"); // Pega o novo select de turma
+const turmaSelect = document.getElementById("turma");
 
 const API_URL = 'https://partedobackend.onrender.com';
 
@@ -15,8 +24,8 @@ async function carregarTurmasDropdown() {
 
         turmas.forEach(turma => {
             const option = document.createElement('option');
-            option.value = turma.id; // O valor será o ID da turma
-            option.textContent = `${turma.nome_turma} (${turma.turno})`; // Ex: "1º Ano A (Manhã)"
+            option.value = turma.id;
+            option.textContent = `${turma.nome_turma} (${turma.turno})`;
             turmaSelect.appendChild(option);
         });
 
@@ -27,7 +36,6 @@ async function carregarTurmasDropdown() {
 }
 
 async function carregarAlunos() {
-    // ... (código para carregar alunos na tabela continua o mesmo) ...
     tabela.innerHTML = '<tr><td colspan="9">Carregando alunos...</td></tr>';
     try {
         const response = await fetch(`${API_URL}/alunos`);
