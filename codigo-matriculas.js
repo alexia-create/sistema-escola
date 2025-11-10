@@ -6,6 +6,15 @@
     }
 })();
 
+function formatarData(dataISO) {
+    if (!dataISO) return 'N/A';
+    const data = new Date(dataISO);
+    const dia = String(data.getUTCDate()).padStart(2, '0');
+    const mes = String(data.getUTCMonth() + 1).padStart(2, '0');
+    const ano = data.getUTCFullYear();
+    return `${dia}/${mes}/${ano}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector("#relatorio-container");
     const API_URL = 'https://partedobackend.onrender.com';
@@ -68,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const linha = document.createElement('tr');
                     linha.innerHTML = `
             <td>${aluno.nome_aluno}</td>
-            <td>${aluno.data_nascimento}</td>
+            <td>${formatarData(aluno.data_nascimento)}</td> 
             <td>${aluno.nome_mae}</td>
-          `;
+`;
                     tbody.appendChild(linha);
                 });
 
