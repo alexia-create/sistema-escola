@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Matrículas</title>
+    <link rel="stylesheet" href="formulario.css">
+    <style>
+        body {
+            padding: 40px 20px;
+        }
+        .link-voltar {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<h1 class="titulo-site">
+    Relatório de <span>Alunos Matriculados</span>
+</h1>
+
+<div class="wrapper" style="max-width: 900px; padding: 40px;">
+    <div class="form-container">
+        <h2>Lista de Alunos por Turma</h2>
+
+        <section class="tabela-section" style="overflow-x: auto;">
+            <table id="tabelaMatriculas">
+                <thead>
+                <tr>
+                    <th>Nome do Aluno</th>
+                    <th>Turma</th>
+                    <th>Turno</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <a href="dashboard.html" class="link-voltar">Voltar ao Painel</a>
+    </div>
+</div>
+
+<script src="codigo-matriculas.js"></script>
+</body>
+</html>
