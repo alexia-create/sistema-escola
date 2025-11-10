@@ -58,12 +58,9 @@ function adicionarLinha(aluno) {
     <td>${aluno.nome_mae}</td>
     <td>${aluno.email || 'N/A'}</td>
     <td>${aluno.telefone || 'N/A'}</td>
-    <td>N/A</td> <td>N/A</td> <td>
+    <td>${aluno.nome_turma || 'N/A'}</td> <td>${aluno.turno || 'N/A'}</td> <td>
       <button class="edit-btn">Editar</button> 
       <button class="delete-btn">
-        <img src="lixeira.png" alt="Excluir" class="icon-lixeira">
-      </button>
-    </td>
   `;
 
     novaLinha.querySelector(".edit-btn").addEventListener("click", () => {
@@ -75,7 +72,7 @@ function adicionarLinha(aluno) {
         document.getElementById("email").value = aluno.email;
         document.getElementById("telefone").value = aluno.telefone;
 
-        turmaSelect.value = "";
+        turmaSelect.value = aluno.turmaID || "";
 
         idEmEdicao = aluno.id;
         submitBtn.textContent = "Salvar Alterações";
@@ -117,7 +114,7 @@ form.addEventListener("submit", async (e) => {
         email: document.getElementById("email").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
         endereco: null,
-        turmaID: turmaSelect.value // NOVO: envia o ID da turma selecionada
+        turmaID: turmaSelect.value
     };
 
     if (idEmEdicao) {
@@ -139,8 +136,6 @@ form.addEventListener("submit", async (e) => {
             alert('Erro ao conectar ao servidor para atualizar.');
         }
     } else {
-        // --- ESTAMOS CRIANDO UM NOVO (POST) ---
-        // (A rota POST agora espera o turmaID)
         if (!dadosAluno.turmaID) {
             alert("Por favor, selecione uma turma!");
             return;
