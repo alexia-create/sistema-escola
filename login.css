@@ -14,6 +14,18 @@ body {
   align-items: center;
   justify-content: center;
 }
+.titulo-site{
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+  z-index: 10;
+}
 
 /* Container principal */
 .wrapper {
@@ -28,6 +40,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Formulário */
